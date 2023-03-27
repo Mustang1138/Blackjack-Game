@@ -1,6 +1,4 @@
 import java.util.*;
-import java.io.*;
-import java.nio.file.Path;
 
 public class card {
 	//Attributes declared
