@@ -5,6 +5,7 @@ import java.util.List;
 
 public class deck {
 	//List attributes are declared
+	//JAVATPOINT, 2023. Java List[online]. Available from: https://www.javatpoint.com/java-list [Accessed 20 March 2023]
 	List<String> deck = new ArrayList<String>();
 	List<Integer> deckNums = new ArrayList<Integer>();
 	
@@ -15,7 +16,8 @@ public class deck {
 	}
 	
 	public void setDeck() {
-		/*Reads through external deck file and adds each line to the list*/
+		/*Reads through external deck file and adds each line to the list
+		* W3SCHOOLS, 2023. Java Read Files[online]. Available from: https://www.w3schools.com/java/java_files_read.asp [Accessed 20 March 2023]*/
 		BufferedReader r;
 		//Try+catch used in case file cannot be read correctly
 		try {
