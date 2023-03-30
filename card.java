@@ -4,16 +4,16 @@ public class card {
 	//Attributes declared
 	int cardVal; //This is the integer value of the card
 	String cardName; //This is the name of the card, ie Ace of Spades
-	deck deck = new deck(); //Instantiates the deck object
 	
 	
-	public card() {
+	public card(deck deck) {
 		//Instantiates Card object
 		cardName = null;
 		cardVal = 0;
+		generate(deck);
 	}
 	
-	public void generate() {
+	public void generate(deck deck) {
 		/* This method generates a card by picking a random index from a list of cards.
 		 * The list is retrieved from the deck object.
 		 * JAVATPOINT, 2023. Java List[online]. Available from: https://www.javatpoint.com/java-list [Accessed 20 March 2023]*/
