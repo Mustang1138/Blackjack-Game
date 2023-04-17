@@ -50,44 +50,41 @@ public class game {
 		 */
 		do {
 			while (hasChosen == false) {
-				while (choice < 1 || choice > 4) {
-					
-					Main.print("Enter Choice Below");
-					//Takes string input from user 
-					String strChoice = myObj.nextLine();
-					/*
-					 * Tries to parse the string input to an integer
-					 * If a numberformatexception is raised, player is told to enter a number
-					 *  W3Schools, 2023. Java Exceptions - Try...Catch[online]. Available from: https://www.w3schools.com/java/java_try_catch.asp [Accessed 30/03/23]
-					 */
-					try {
-						choice = Integer.parseInt(strChoice);
-					} catch (NumberFormatException e) {
-						Main.print("ENTER NUMBER");
-					}
-					//Depending on choice made, bet attribute is set accordingly
-					if (choice == 1 && balance >= 100) {
-						bet = 100;
-						hasChosen = true;
-					} else if (choice == 2 && balance >= 200) {
-						bet = 200;
-						hasChosen = true;
-					} else if (choice == 3 && balance >= 500) {
-						bet = 500;
-						hasChosen = true;
-					} else if (choice == 4 && balance >= 1000) {
-						bet = 1000;
-						hasChosen = true;
-					} else {
-						Main.print("Please choose from given options");
-						hasChosen = false;
-						
-					}
-					if (balance < bet) {
-						Main.print("Balance too low for bet of " + bet);
-						hasChosen = false;
-					}
+				Main.print("Enter Choice Below");
+				//Takes string input from user 
+				String strChoice = myObj.nextLine();
+				/*
+				 * Tries to parse the string input to an integer
+				 * If a numberformatexception is raised, player is told to enter a number
+				 *  W3Schools, 2023. Java Exceptions - Try...Catch[online]. Available from: https://www.w3schools.com/java/java_try_catch.asp [Accessed 30/03/23]
+				 */
+				try {
+					choice = Integer.parseInt(strChoice);
+				} catch (NumberFormatException e) {
+					Main.print("ENTER NUMBER");
 				}
+				//Depending on choice made, bet attribute is set accordingly
+				if (choice == 1 && balance >= 100) {
+					bet = 100;
+					hasChosen = true;
+				} else if (choice == 2 && balance >= 200) {
+					bet = 200;
+					hasChosen = true;
+				} else if (choice == 3 && balance >= 500) {
+					bet = 500;
+					hasChosen = true;
+				} else if (choice == 4 && balance >= 1000) {
+					bet = 1000;
+					hasChosen = true;
+				}  else if (balance < bet) {
+					Main.print("Balance too low for bet of " + bet);
+					hasChosen = false;
+				} else {
+					Main.print("Please choose from given options");
+					hasChosen = false;
+
+				}
+				
 			}
 		} while (choice == 0);
 	}
@@ -108,7 +105,7 @@ public class game {
 		 */
 		card house1 = new card(deck);
 		card house2 = new card(deck);
-		var houseTotal = house1.cardVal + house2.cardVal;
+		var houseTotal = house2.cardVal;
 		card player1 = new card(deck);
 		card player2 = new card(deck);
 		var playerTotal = player1.cardVal + player2.cardVal;
@@ -120,7 +117,7 @@ public class game {
 		Thread.sleep(1000);
 		Main.print("Players card: " + player2.cardName);
 		Thread.sleep(1000);
-		Main.print("House total: " + house2.cardVal + "\nPlayers total: " + playerTotal);
+		Main.print("House total: " + houseTotal + "\nPlayers total: " + playerTotal);
 		
 		//Checks if the player or house or both have drawn blackjack (a score of 21 from any two cards)
 		if (houseTotal == 21 && playerTotal == 21) {
@@ -169,6 +166,7 @@ public class game {
 								//Stand
 								//House card is revealed and total is displayed
 								Main.print("House hidden card: " + house1.cardName);
+								houseTotal += house1.cardVal;
 								Main.print("House total: " + houseTotal);
 								if (houseTotal == 21) {
 									Main.print("House draws blackjack");
