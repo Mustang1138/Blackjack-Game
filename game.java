@@ -22,7 +22,7 @@ public class game {
 		
 		// Loops through playing rounds while the player wants to play
 		while (playGame == true) {
-			betMenu();
+			//betMenu();
 			play();
 		}
 		
@@ -98,7 +98,7 @@ public class game {
 		var gameWin = 0;
 		//The deck object for this game is generated
 		deck deck = new deck();
-		Main.print("You have bet " + bet);
+		//Main.print("You have bet " + bet);
 		//Thread.sleep is used throughout the game to improve readability in a text-based interface
 		Thread.sleep(1000);
 		/*
