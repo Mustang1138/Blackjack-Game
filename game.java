@@ -100,6 +100,32 @@ public class game {
             return -1; // No blackjack for either player or dealer
         }
     }
+    
+    private void Hit() {
+        Card newCard = new Card(deck);
+        playerCards.add(newCard);
+        playerTotal = calculateTotal(playerCards);
+        System.out.println("Player draws: " + newCard.cardName);
+        System.out.println("Player's new total: " + playerTotal);
+    }
+    
+    private void Stand() {
+        playerTurnFinished = true;
+    }
+    
+    private void doubleDown() {
+        if (balance > (bet * 2)) {
+        bet *= 2;
+        newCard = new Card(deck);
+        playerCards.add(newCard);
+        playerTotal = calculateTotal(playerCards);
+        System.out.println("Player doubles down and draws: " + newCard.cardName);
+        System.out.println("Player's new total: " + playerTotal);
+        playerTurnFinished = true;
+        } else {
+            System.out.println("Balance too low for double down.");
+        }
+    }
 
 private void playerTurn() {
     Scanner scanner = new Scanner(System.in);
@@ -116,29 +142,15 @@ private void playerTurn() {
         switch (choice) {
             case 1:
                 // Hit
-                Card newCard = new Card(deck);
-                playerCards.add(newCard);
-                playerTotal = calculateTotal(playerCards);
-                System.out.println("Player draws: " + newCard.cardName);
-                System.out.println("Player's new total: " + playerTotal);
+                Hit();
                 break;
             case 2:
                 // Stand
-                playerTurnFinished = true;
+                Stand();
                 break;
             case 3:
                 // Double Down
-                if (balance > (bet * 2)) {
-                    bet *= 2;
-                    newCard = new Card(deck);
-                    playerCards.add(newCard);
-                    playerTotal = calculateTotal(playerCards);
-                    System.out.println("Player doubles down and draws: " + newCard.cardName);
-                    System.out.println("Player's new total: " + playerTotal);
-                    playerTurnFinished = true;
-                } else {
-                    System.out.println("Balance too low for double down.");
-                }
+                doubleDown();
                 break;
             default:
                 System.out.println("Please choose from the given options.");
