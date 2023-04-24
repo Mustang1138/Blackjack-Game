@@ -51,7 +51,7 @@ public class Main {
 					print("    GAME STARTING    ");
 					Thread.sleep(2000);
 					game game = new game();
-					game.start();
+					game.play();
 					return true;
 				} else if (choice == 2) {
 					return false;
